@@ -1,7 +1,12 @@
 from django.urls import path
-from .views import SensorsView
+from rest_framework.routers import DefaultRouter
+
+from .views import SensorsView, SensorView, MeasureViewset
+
+r = DefaultRouter()
+r.register('temp',MeasureViewset)
 
 urlpatterns = [
-    path('get/', SensorsView),
-    # path('get_1/<pk>/', SensorView_1.as_view())
-]
+    path('sensors/', SensorsView.as_view()),
+    path('sensor/<pk>/', SensorView.as_view()),
+]+r.urls

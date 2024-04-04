@@ -11,3 +11,4 @@ class Measurement(models.Model):
     temperature = models.IntegerField()
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE,null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
+    objects = models.Manager()
